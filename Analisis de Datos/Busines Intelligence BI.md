@@ -22,4 +22,4 @@ Ejemplo:
 - Presentar informacion a tiempo. **Manejo de expectativas y compromiso**.
 - Debe proteger sus activos. **Seguridad**
 - Es la fuente mas confiable y definitiva. **Soporte para las desiciones**.
-- Debe ser aceptaro y conciderado para el exito. **Simple, rapido y confiable**. `rgb(R,G,B)`
+- Debe ser aceptaro y conciderado para el exito. **Simple, rapido y confiable**. `rgb(9, 105, 218)`
