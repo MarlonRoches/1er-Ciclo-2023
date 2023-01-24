@@ -4,6 +4,9 @@ Es el **proceso en el que se revelan insights** esenciales del negocio.
 Ejecutar modelos, metodos y algorutmos del DW para identificar patrones y similitudes en los datos con la finalidad de facilitar de desiciones.
 
 Se ejecuta sobre el DW ya estructurado.
+
+![](https://www.juanbarrios.com/wp-content/uploads/2019/12/diagram-business-intelligence.png)
+
 ### ***Insights***
 Descubrir algo que a simple vista no es relevante.
 Ejemplo:

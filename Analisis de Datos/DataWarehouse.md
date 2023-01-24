@@ -42,5 +42,14 @@ Ventas, mercadeo, RRHH, etc.
 - Datps ño,íos e integros para la compañia.
 - Se separan los datos de las fientes transaccinoales.
 - No necesitamos repeticiones.
+
+## ***Como arquitectos Debemos***
+- **Crear la mejor solicion** tecnoca pisible utilizando la tecnologia adecuada.
+- **Ganar la confianza** del patrocinador y usuario. Demostrando, entregando la mejor informacion y mostrando el mayor valor posible.
+- **Conocer** a fondo el negocio.
+- **Suplir la demanda** de informacion con modelos de BI.
+
+
+
 ![Data Warehouse](https://tableauperu.com/wp-content/uploads/2019/02/data-warehouse-tableau-peru-sit-consulting-4.png)
 
