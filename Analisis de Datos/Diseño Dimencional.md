@@ -1,3 +1,4 @@
+
 # Diseño Dimencional
 ## Pasos
 ### ***1. Selecciionar el proceso de negocio sobre el cual trabajar***
