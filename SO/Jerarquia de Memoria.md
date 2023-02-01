@@ -7,9 +7,13 @@ Apuntador para guiar las memorias
 - Intermediario entre registros y la memoria principal.
 - Invisible para el OS
 - Volatil y muy rapida
-- n/K => registros sobre bloque
-- 2**n*K (n: # registros, K: # Bloques) => Ghz velocidad de la cache
 ## RAM (Principal)
+- n/K => registros sobre bloque
+- (2**n)/K (n: # registros, K: # Bloques) => capacidad de cache para almacenar
+- Capacidad maxima es de 64MB
+- Capacidad minima es de 16MB
+- Es poca memoria por que es volatil
+
 Factores principales
 - Cantidad de memoria 
 - Velocidad
