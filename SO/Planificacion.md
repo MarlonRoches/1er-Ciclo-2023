@@ -34,6 +34,11 @@ Revisar el del disco duro.
 - Tiempo de ejecucion.
 - Es el tiempo individual de cada proceso. 
 
-
+## Tipos
+### Apropiativos
+Nadie le quitar el proceso, aunque me haga daño.
+### Expropiativo
+Tomamos el proceso, lo trato de ejcutar, pero como me perudica, lo suelto.
+ 
 ## FIFO
 ![FIFO](./Images/Fifo.jpeg)
