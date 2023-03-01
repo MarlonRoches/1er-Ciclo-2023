@@ -42,3 +42,47 @@ Tomamos el proceso, lo trato de ejcutar, pero como me perudica, lo suelto.
  
 ## FIFO
 ![FIFO](./Images/Fifo.jpeg)
+
+## Por Prioridad
+
+## Inadmicion
+Cuando un proceso con baja prioridad puede ser que nunca se ejecute.
+
+Como tiene poca prioridad, entran procesos mas altas y nunca se procesan por su bajo nivel de prio.
+
+### Prioridades Iguales
+- Se toma el que entra primero (tiempo de llegada)  
+- El tiempo de CPU mas pequeño
+- Tiempo de ejecucion
+
+
+## QUANTUM
+Tiempo de procesador que le da al proceso para poderse ejecutar.
+
+Si no se ejecuta en ese tiempo, lo manda a la cola de espera y pasa a otro proceso.
+
+Lo saco de la cola "Listos" y avanzo con el siguiente proceso.
+
+
+## Round robin
+Es un algoritmo que le da un tiempo (Q (Quantum).
+
+Si los procesos tienen mas tiempo de CPU es mayor, se fragmenta y se pasa a la cola de listos.
+
+![FIFO](./Images/roundRobin.jpeg)
+![FIFO](./Images/roundRobinTiempos.jpeg)
+
+## FIFO vs RR
+FIFO es mas rapido que Round Robin
+
+## REsolver inadmicion
+Los prrocesos se van a enviar a diferentes Colas.
+
+Calsificacndo el proceso por sus caracteristicas, se van moviendo colas a diferentes.
+- Colas 
+
+
+## ASPM
+colas de usuario y sistema
+## 
+Colas en trabajo y listo 
