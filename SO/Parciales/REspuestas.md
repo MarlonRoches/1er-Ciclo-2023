@@ -23,12 +23,28 @@ Las llamadas al sistema **permiten a los programas de usuario interactuar con el
 
 
 En resumen, las llamadas al sistema son una parte crítica de la interfaz entre los programas de usuario y el sistema operativo. Permiten a los programas de usuario acceder a los servicios y recursos del sistema de una manera controlada y segura, y son esenciales para la funcionalidad y el rendimiento de los sistemas operativos modernos.
-# definicion proceso SO
+# Definicion proceso SO
 El principal concepto en cualquier sistema operativo es el de proceso. Un proceso es un programa en ejecución, incluyendo el valor del program counter, los registros y las variables. Conceptualmente, cada proceso tiene un hilo (thread) de ejecución que es visto como un CPU virtual.
 
 
 
 # Diagrama como se construye un proceso en memoria y detalle  cuales son sus secciones
+- Espacio de direcciones virtuales: cada proceso tiene su propio espacio de direcciones virtuales, que se utiliza para asignar y acceder a la memoria del proceso. El espacio de direcciones virtuales se divide en varias secciones, que incluyen:
+
+    - Segmento de código: contiene el código de la aplicación, incluyendo las instrucciones que se deben ejecutar.
+
+    - Segmento de datos: contiene los datos que se utilizan durante la ejecución del programa, como variables globales, constantes, etc.
+
+    - Segmento de pila: contiene las variables locales y los parámetros de la función, así como la dirección de retorno de las llamadas a funciones.
+
+    - Segmento de montón: se utiliza para asignar memoria dinámicamente durante la ejecución del programa, por ejemplo, cuando se utiliza la función malloc().
+
+- Tabla de páginas: cada proceso tiene una tabla de páginas que se utiliza para asignar la memoria física a la memoria virtual. La tabla de páginas se utiliza para traducir las direcciones virtuales a direcciones físicas.
+
+- Administrador de memoria: el administrador de memoria es responsable de asignar y liberar la memoria para el proceso. El administrador de memoria se encarga de la gestión de la memoria física y la asignación de memoria virtual a cada proceso.
+
+- Gestor de procesos: el gestor de procesos es responsable de la creación, programación y gestión de los procesos. El gestor de procesos se encarga de la planificación de procesos, la asignación de recursos, la gestión de los estados de los procesos, la programación de tareas, etc.
+
 
 # 5 estados de un proceso
 - **Nuevo**: el proceso se ha creado pero aún no se ha iniciado.
