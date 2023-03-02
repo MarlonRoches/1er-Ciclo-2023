@@ -2,8 +2,31 @@
 Un SO (Sistema Operativo) es un software que actúa como intermediario entre el hardware de un dispositivo (como una computadora, teléfono móvil o tablet) y las aplicaciones y usuarios que interactúan con él. Su objetivo principal es administrar los recursos del sistema, como la memoria, el procesador, el disco duro y los dispositivos de entrada y salida, para que las aplicaciones puedan ejecutarse de manera eficiente y sin interferir entre sí.
 
 # componente basicos para interactuar con el SO
+## Componentes
+Interfaz de usuario: es la parte de la aplicación que permite a los usuarios interactuar con el sistema operativo. La interfaz de usuario puede ser gráfica o de línea de comandos.
 
+- Bibliotecas: son colecciones de funciones y rutinas que se utilizan para interactuar con el sistema operativo. Las bibliotecas proporcionan una interfaz de programación de aplicaciones (API) que permite a los desarrolladores interactuar con el sistema operativo sin conocer los detalles de bajo nivel.
+
+- Controladores de dispositivo: son programas que permiten a los dispositivos de hardware interactuar con el sistema operativo. Los controladores de dispositivo proporcionan una capa de abstracción entre el hardware y el software del sistema operativo.
+
+- Sistema de archivos: es la estructura utilizada por el sistema operativo para organizar y almacenar archivos en dispositivos de almacenamiento. El sistema de archivos proporciona una interfaz para la gestión de archivos y directorios.
+
+- Servicios de red: son programas que permiten la comunicación entre diferentes dispositivos en una red. Los servicios de red proporcionan una interfaz para la comunicación de datos y la gestión de conexiones.
+
+- Programas utilitarios: son programas que realizan tareas específicas, como la gestión de procesos, la configuración del sistema, la monitorización del rendimiento, la gestión de usuarios y grupos, etc. Los programas utilitarios proporcionan una interfaz para realizar tareas administrativas y de gestión del sistema operativo.
+## Llamadas de sistema
+Son una **interfaz proporcionada por un sistema operativo para que los programas de usuario puedan solicitar servicios y recursos del sistema**. 
+
+Permiten a los programas de usuario acceder a los servicios y recursos del sistema operativo, como la creación y gestión de procesos, la gestión de archivos y dispositivos de entrada/salida, y la gestión de la memoria.
+
+Las llamadas al sistema **permiten a los programas de usuario interactuar con el sistema operativo de una manera controlada y segura.** 
+
+
+En resumen, las llamadas al sistema son una parte crítica de la interfaz entre los programas de usuario y el sistema operativo. Permiten a los programas de usuario acceder a los servicios y recursos del sistema de una manera controlada y segura, y son esenciales para la funcionalidad y el rendimiento de los sistemas operativos modernos.
 # definicion proceso SO
+El principal concepto en cualquier sistema operativo es el de proceso. Un proceso es un programa en ejecución, incluyendo el valor del program counter, los registros y las variables. Conceptualmente, cada proceso tiene un hilo (thread) de ejecución que es visto como un CPU virtual.
+
+
 
 # Diagrama como se construye un proceso en memoria y detalle  cuales son sus secciones
 
