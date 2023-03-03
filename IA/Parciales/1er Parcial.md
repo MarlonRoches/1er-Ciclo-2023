@@ -103,4 +103,6 @@ Greedy Search: Toma solamente la euristica. Tomar la mas baja, me estoy acercand
 A* = g(x) UC + h(x) Greedy
 
 # Expectimax
-![expectimax](./expectimax.png)
+![expectimax](./expex1.png)
+![expectimax](./expec2.png)
+![expectimax](./expec3.png)
