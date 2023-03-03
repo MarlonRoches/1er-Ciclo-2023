@@ -102,6 +102,17 @@ Greedy Search: Toma solamente la euristica. Tomar la mas baja, me estoy acercand
 > h(x) Costo del camino
 A* = g(x) UC + h(x) Greedy
 
+# MinMax
+![expectimax](./min1.png)
+![expectimax](./min2.png)
+![expectimax](./min3.png)
+
+# Alpha Beta
+
+![expectimax](./ab1.png)
+![expectimax](./ab2.png)
+![expectimax](./ab3.png)
+
 # Expectimax
 ![expectimax](./expex1.png)
 ![expectimax](./expec2.png)
