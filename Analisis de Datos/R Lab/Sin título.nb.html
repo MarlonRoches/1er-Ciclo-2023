@@ -1769,12 +1769,103 @@ the chunk or by placing your cursor inside it and pressing
 toolbar or by pressing <em>Cmd+Option+I</em>.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyB0aXBvcyBkZSBkYXRvcyBiYXNpY29zIGVuIFJcbnggPC0gMlxudHlwZW9mKHgpXG5cbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyB0aXBvcyBkZSBkYXRvcyBiYXNpY29zIGVuIFJcbiMgRG91YmxlXG54IDwtIDJcbnR5cGVvZih4KVxuYGBgIn0= -->
 <pre class="r"><code># tipos de datos basicos en R
+# Double
 x &lt;- 2
-typeof(x)
-</code></pre>
+typeof(x)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiZG91YmxlXCJcbiJ9 -->
+<pre><code>[1] &quot;double&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYzwtIFwiQ0NDXCJcbmNcbmBgYCJ9 -->
+<pre class="r"><code>c&lt;- &quot;CCC&quot;
+c</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiQ0NDXCJcbiJ9 -->
+<pre><code>[1] &quot;CCC&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYzwtXCJIb2xhXCJcbmQ8LSBcIk11bmRvXCJcbm1lbnNhamUgPC0gcGFzdGUoYyxkKVxubWVuc2FqZVxuYGBgIn0= -->
+<pre class="r"><code>c&lt;-&quot;Hola&quot;
+d&lt;- &quot;Mundo&quot;
+mensaje &lt;- paste(c,d)
+mensaje</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiSG9sYSBNdW5kb1wiXG4ifQ== -->
+<pre><code>[1] &quot;Hola Mundo&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJ1ZWJhMTwtIFRSVUVcbnBydWViYTIgPC0gRkFMU0VcblxucHJ1ZWJhMSA9PSBwcnVlYmEyXG5gYGAifQ== -->
+<pre class="r"><code>prueba1&lt;- TRUE
+prueba2 &lt;- FALSE
+
+prueba1 == prueba2</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIEZBTFNFXG4ifQ== -->
+<pre><code>[1] FALSE</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJ1ZWJhMSE9IHBydWViYTJcbmBgYCJ9 -->
+<pre class="r"><code>prueba1!= prueba2</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFRSVUVcbiJ9 -->
+<pre><code>[1] TRUE</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2F0b3MgPC0gZGF0YS5mcmFtZShjb2xvciA9IGMoXCJuZWdyb1wiLCBcImJsYW5jb1wiLCBcImFtYXJpbGxvXCIpLFxuICAgICAgICAgICAgICAgICAgICBwZXNvID0gYyAoMSwyLDIwKSxcbiAgICAgICAgICAgICAgICAgICAgbGVfZ3VzdGFfanVnYXI9IGMoMSwwLDEpXG4gICAgICAgICAgICAgICAgICAgIClcbiMgaW1wcmVzb24gZGUgbGEgXG5nYXRvc1xuYGBgIn0= -->
+<pre class="r"><code>gatos &lt;- data.frame(color = c(&quot;negro&quot;, &quot;blanco&quot;, &quot;amarillo&quot;),
+                    peso = c (1,2,20),
+                    le_gusta_jugar= c(1,0,1)
+                    )
+# impreson de la 
+gatos</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibnJvdyI6MywibmNvbCI6Mywic3VtbWFyeSI6W119LCJyZGYiOiJINHNJQUFBQUFBQUFBMTFSd1U3RE1BejEybWF3U3BzbTdUdGFJZURBRFE2SUQwQWc3VFo1WFNpRkxLblNWSERray9tQ2daUFdtaHBMVmZ4c1B6L2JmWDdjM3VUYkhBQlN5SklFVWtFdWlOZVhwK0lPS0VKZ0Joa3MvUHROUlp0UUNiQWVHQ0VodEt5dEdjRjhyMUJYakM3eGlMWlJ5cEMvOHBUN1h3ajJBT043QzJ5VFBOc1pUMllSR28reWkrZW9qREoyQkZrck81NWlwZVN1N2p1SHU0KytSaHYxV2xqelZYSy9KWDNKejZDWXhxS1Z3bzVGT1pnZjBHSDVab2xQNkJSUkxrenJHcU9KbFBqTGlZZzhzMUZnM1dzL3lhR28zbnY5V1Z4ZmVZV1FIMnc1K3VuVTk1ckozOWhMOEorUXVtNjA1T0VWN3FYaWc5REtZZU95dFkxMnZBcEZ1OUlaaDF5WDAwVTVFcGFEMHorK2FtSWtNUUlBQUE9PSJ9 -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["color"],"name":[1],"type":["chr"],"align":["left"]},{"label":["peso"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["le_gusta_jugar"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"negro","2":"1","3":"1"},{"1":"blanco","2":"2","3":"0"},{"1":"amarillo","2":"20","3":"1"}],"options":{"columns":{"min":{},"max":[10],"total":[3]},"rows":{"min":[10],"max":[10],"total":[3]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG4jIEFjY2VkZXIgYSB1bmEgY29sdW1uYSBjb21vIGxpc3RhLCBtdWx0aXBsaWNhIHRvZGEgbGEgbGlzdGFcbmdhdG9zJHBlc28gKiAxMFxuYGBgIn0= -->
+<pre class="r"><code>
+# Acceder a una columna como lista, multiplica toda la lista
+gatos$peso * 10</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdICAxMCAgMjAgMjAwXG4ifQ== -->
+<pre><code>[1]  10  20 200</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBtYXAgY29uIGxvcyB2YWxvcmVzIGRlIGxhIGxpc3RhXG5wYXN0ZShcImVsIGNvbG9yIGRlbCBnYXRvIGVzIFwiLCBnYXRvcyRjb2xvcilcbmBgYCJ9 -->
+<pre class="r"><code># map con los valores de la lista
+paste(&quot;el color del gato es &quot;, gatos$color)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiZWwgY29sb3IgZGVsIGdhdG8gZXMgIG5lZ3JvXCIgICAgXCJlbCBjb2xvciBkZWwgZ2F0byBlcyAgYmxhbmNvXCIgICBcImVsIGNvbG9yIGRlbCBnYXRvIGVzICBhbWFyaWxsb1wiXG4ifQ== -->
+<pre><code>[1] &quot;el color del gato es  negro&quot;    &quot;el color del gato es  blanco&quot;   &quot;el color del gato es  amarillo&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBkZXZ1ZWx2ZSBlbCB0aXBvIGRlIGNsYXNlIGFsIHF1ZSBwZXJ0ZW5lY2VcbmNsYXNzKGdhdG9zKVxuYGBgIn0= -->
+<pre class="r"><code># devuelve el tipo de clase al que pertenece
+class(gatos)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiZGF0YS5mcmFtZVwiXG4ifQ== -->
+<pre><code>[1] &quot;data.frame&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudHlwZW9mKGdhdG9zJGNvbG9yKVxuYGBgIn0= -->
+<pre class="r"><code>typeof(gatos$color)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiY2hhcmFjdGVyXCJcbiJ9 -->
+<pre><code>[1] &quot;character&quot;</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>When you save the notebook, an HTML file containing the code and
@@ -1786,7 +1877,7 @@ run any R code chunks. Instead, the output of the chunk when it was last
 run in the editor is displayed.</p>
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKVGhpcyBpcyBhbiBbUiBNYXJrZG93bl0oaHR0cDovL3JtYXJrZG93bi5yc3R1ZGlvLmNvbSkgTm90ZWJvb2suIFdoZW4geW91IGV4ZWN1dGUgY29kZSB3aXRoaW4gdGhlIG5vdGVib29rLCB0aGUgcmVzdWx0cyBhcHBlYXIgYmVuZWF0aCB0aGUgY29kZS4gCgpUcnkgZXhlY3V0aW5nIHRoaXMgY2h1bmsgYnkgY2xpY2tpbmcgdGhlICpSdW4qIGJ1dHRvbiB3aXRoaW4gdGhlIGNodW5rIG9yIGJ5IHBsYWNpbmcgeW91ciBjdXJzb3IgaW5zaWRlIGl0IGFuZCBwcmVzc2luZyAqQ21kK1NoaWZ0K0VudGVyKi4gCgpgYGB7cn0KcGxvdChjYXJzKQpgYGAKCkFkZCBhIG5ldyBjaHVuayBieSBjbGlja2luZyB0aGUgKkluc2VydCBDaHVuayogYnV0dG9uIG9uIHRoZSB0b29sYmFyIG9yIGJ5IHByZXNzaW5nICpDbWQrT3B0aW9uK0kqLgoKYGBge3J9CiMgdGlwb3MgZGUgZGF0b3MgYmFzaWNvcyBlbiBSCnggPC0gMgp0eXBlb2YoeCkKCmBgYAoKCldoZW4geW91IHNhdmUgdGhlIG5vdGVib29rLCBhbiBIVE1MIGZpbGUgY29udGFpbmluZyB0aGUgY29kZSBhbmQgb3V0cHV0IHdpbGwgYmUgc2F2ZWQgYWxvbmdzaWRlIGl0IChjbGljayB0aGUgKlByZXZpZXcqIGJ1dHRvbiBvciBwcmVzcyAqQ21kK1NoaWZ0K0sqIHRvIHByZXZpZXcgdGhlIEhUTUwgZmlsZSkuIAoKCgpUaGUgcHJldmlldyBzaG93cyB5b3UgYSByZW5kZXJlZCBIVE1MIGNvcHkgb2YgdGhlIGNvbnRlbnRzIG9mIHRoZSBlZGl0b3IuIENvbnNlcXVlbnRseSwgdW5saWtlICpLbml0KiwgKlByZXZpZXcqIGRvZXMgbm90IHJ1biBhbnkgUiBjb2RlIGNodW5rcy4gSW5zdGVhZCwgdGhlIG91dHB1dCBvZiB0aGUgY2h1bmsgd2hlbiBpdCB3YXMgbGFzdCBydW4gaW4gdGhlIGVkaXRvciBpcyBkaXNwbGF5ZWQuCgo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKVGhpcyBpcyBhbiBbUiBNYXJrZG93bl0oaHR0cDovL3JtYXJrZG93bi5yc3R1ZGlvLmNvbSkgTm90ZWJvb2suIFdoZW4geW91IGV4ZWN1dGUgY29kZSB3aXRoaW4gdGhlIG5vdGVib29rLCB0aGUgcmVzdWx0cyBhcHBlYXIgYmVuZWF0aCB0aGUgY29kZS4gCgpUcnkgZXhlY3V0aW5nIHRoaXMgY2h1bmsgYnkgY2xpY2tpbmcgdGhlICpSdW4qIGJ1dHRvbiB3aXRoaW4gdGhlIGNodW5rIG9yIGJ5IHBsYWNpbmcgeW91ciBjdXJzb3IgaW5zaWRlIGl0IGFuZCBwcmVzc2luZyAqQ21kK1NoaWZ0K0VudGVyKi4gCgpgYGB7cn0KcGxvdChjYXJzKQpgYGAKCkFkZCBhIG5ldyBjaHVuayBieSBjbGlja2luZyB0aGUgKkluc2VydCBDaHVuayogYnV0dG9uIG9uIHRoZSB0b29sYmFyIG9yIGJ5IHByZXNzaW5nICpDbWQrT3B0aW9uK0kqLgoKYGBge3J9CiMgdGlwb3MgZGUgZGF0b3MgYmFzaWNvcyBlbiBSCiMgRG91YmxlCnggPC0gMgp0eXBlb2YoeCkKCmBgYAoKCmBgYHtyfQpjPC0gIkNDQyIKYwpgYGAKYGBge3J9CmM8LSJIb2xhIgpkPC0gIk11bmRvIgojY29uY2F0ZW5hIGNvbiB1biBzZXA9ICIgIgptZW5zYWplIDwtIHBhc3RlKGMsZCkKbWVuc2FqZQpgYGAKCgoKYGBge3J9CnBydWViYTE8LSBUUlVFCnBydWViYTIgPC0gRkFMU0UKCnBydWViYTEgPT0gcHJ1ZWJhMgpwcnVlYmExIT0gcHJ1ZWJhMgpgYGAKCgpgYGB7cn0KZ2F0b3MgPC0gZGF0YS5mcmFtZShjb2xvciA9IGMoIm5lZ3JvIiwgImJsYW5jbyIsICJhbWFyaWxsbyIpLAogICAgICAgICAgICAgICAgICAgIHBlc28gPSBjICgxLDIsMjApLAogICAgICAgICAgICAgICAgICAgIGxlX2d1c3RhX2p1Z2FyPSBjKDEsMCwxKQogICAgICAgICAgICAgICAgICAgICkKIyBpbXByZXNvbiBkZSBsYSAKZ2F0b3MKCiMgQWNjZWRlciBhIHVuYSBjb2x1bW5hIGNvbW8gbGlzdGEsIG11bHRpcGxpY2EgdG9kYSBsYSBsaXN0YQpnYXRvcyRwZXNvICogMTAKCiMgbWFwIGNvbiBsb3MgdmFsb3JlcyBkZSBsYSBsaXN0YQpwYXN0ZSgiZWwgY29sb3IgZGVsIGdhdG8gZXMgIiwgZ2F0b3MkY29sb3IpCgojIGRldnVlbHZlIGVsIHRpcG8gZGUgY2xhc2UgYWwgcXVlIHBlcnRlbmVjZQpjbGFzcyhnYXRvcykKCnR5cGVvZihnYXRvcyRjb2xvcikKCmBgYAoKCldoZW4geW91IHNhdmUgdGhlIG5vdGVib29rLCBhbiBIVE1MIGZpbGUgY29udGFpbmluZyB0aGUgY29kZSBhbmQgb3V0cHV0IHdpbGwgYmUgc2F2ZWQgYWxvbmdzaWRlIGl0IChjbGljayB0aGUgKlByZXZpZXcqIGJ1dHRvbiBvciBwcmVzcyAqQ21kK1NoaWZ0K0sqIHRvIHByZXZpZXcgdGhlIEhUTUwgZmlsZSkuIAoKCgpUaGUgcHJldmlldyBzaG93cyB5b3UgYSByZW5kZXJlZCBIVE1MIGNvcHkgb2YgdGhlIGNvbnRlbnRzIG9mIHRoZSBlZGl0b3IuIENvbnNlcXVlbnRseSwgdW5saWtlICpLbml0KiwgKlByZXZpZXcqIGRvZXMgbm90IHJ1biBhbnkgUiBjb2RlIGNodW5rcy4gSW5zdGVhZCwgdGhlIG91dHB1dCBvZiB0aGUgY2h1bmsgd2hlbiBpdCB3YXMgbGFzdCBydW4gaW4gdGhlIGVkaXRvciBpcyBkaXNwbGF5ZWQuCgo=</div>
 
 
 

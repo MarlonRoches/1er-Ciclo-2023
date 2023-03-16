@@ -15,8 +15,54 @@ Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by press
 
 ```{r}
 # tipos de datos basicos en R
+# Double
 x <- 2
 typeof(x)
+
+```
+
+
+```{r}
+c<- "CCC"
+c
+```
+```{r}
+c<-"Hola"
+d<- "Mundo"
+#concatena con un sep= " "
+mensaje <- paste(c,d)
+mensaje
+```
+
+
+
+```{r}
+prueba1<- TRUE
+prueba2 <- FALSE
+
+prueba1 == prueba2
+prueba1!= prueba2
+```
+
+
+```{r}
+gatos <- data.frame(color = c("negro", "blanco", "amarillo"),
+                    peso = c (1,2,20),
+                    le_gusta_jugar= c(1,0,1)
+                    )
+# impreson de la 
+gatos
+
+# Acceder a una columna como lista, multiplica toda la lista
+gatos$peso * 10
+
+# map con los valores de la lista
+paste("el color del gato es ", gatos$color)
+
+# devuelve el tipo de clase al que pertenece
+class(gatos)
+
+typeof(gatos$color)
 
 ```
 
