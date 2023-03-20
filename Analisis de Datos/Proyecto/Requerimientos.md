@@ -11,3 +11,29 @@ como	se	efectúan las	cargas	de	las	tablas	dimensionales	y	de	hechos.
 efectuadas	a	los	datos,	así como	todo	lo	asumido	al	momento	de	efectuar	
 este	proceso.
     - Inculir desiciones de 
+
+
+# Ventajas Semaforos
+- Resuelven los problemas que presentan la concurrencia
+- Son estructuras pasivas simples
+- Son faciles de comprender
+- Tienen una implementacion muy eficiente
+# Desventajas Semaforos
+- Son muy bajo nivel
+- Un cambio de orden puede provocar interbloqueo
+- Requiere que la gestion de un semaforo se distribuya por todo el codigo.
+- La depuracion de los errores en su gestion es mas dificil.
+- Es dificil de detectar errores cuando el semaforo esta mal implementado.
+
+# Comunicacion entre procesos
+Comunicacion entre 2 procesos que intercambian informacion:
+- Local:
+
+    - Transferencia de informacion entre procesos que comparten entorno. En un mismo sistema operativo.
+
+
+- Remota:
+    - Transferencia de informacion entre los procesos.  Sobre diferentes sistemas operativo.
+
+# Señales
+Son alertas que solo permiten enviar
