@@ -1,0 +1,128 @@
+---
+title: "Laboratorio 2 Maron Andres Roches Revolorio 1250918"
+output: html_notebook
+---
+
+# >%> con el objeto de arriba hace la operacion de abajo
+```{r}
+# importar librerisas
+ library(dplyr)
+library(ggplot2)
+```
+
+```{r}
+# leyendo archivo
+dataset <- read.csv2("hour.csv")  # csv 2 separa los datos automaticamente
+
+dataset
+```
+# que mes es el que tiene mayor demanda del servicio?
+
+```{r}
+ds1 <- dataset %>% 
+        group_by(mnth) %>%  #agrpalo por las siguiente columna
+        summarise(suma = sum(cnt)) %>%
+        arrange(desc(suma))
+ds1
+# factor: cada barra de estos es una clasificacion diferente asignada por la columna que se le pasa como parametro
+#desde que datase vamos a trabajar?
+ggplot(ds1, aes(y=suma, x=factor(mnth), fill =suma)) +
+  # que tipo de grafico quiero
+  geom_bar(position = "dodge", stat = "identity")+
+  #titulos descriptivos
+  labs(title="Cantidad de Rentas Por Mes", y = "Cantidad", x= "Mes") +
+  # el texto asignado a las figuras 
+  geom_text(aes(label=suma), vjust= 1.6, color = "white", size=2.5) +
+  theme_minimal()
+
+```
+
+
+
+
+# que hora es la de mayor demanda
+```{r}
+ds2 <- dataset %>% 
+        group_by(hr) %>%  #agrpalo por las siguiente columna
+        summarise(suma = mean(cnt)) %>%
+        arrange(desc(suma))
+
+        #summarise(suma = (median(cnt))) %>% # mediana
+        #summarise(suma = (mean(cnt))) %>% # promedio
+
+ds2
+
+ggplot(ds2, aes(y=suma, x=factor(hr), fill =suma)) +
+  # que tipo de grafico quiero
+  geom_bar(position = "dodge", stat = "identity")+
+  #titulos descriptivos
+  labs(title="Cantidad de Rentas Por Mes", y = "Cantidad", x= "Mes") +
+  # el texto asignado a las figuras 
+  geom_text(aes(label=suma), vjust= 1.6, color = "white", size=2.5) +
+  theme_minimal()
+```
+# Que temporada es la mas alta
+```{r}
+ds3 <- dataset %>% 
+  select(season, cnt) %>%
+  mutate(temporada = case_when(
+  season==1 ~ "Primavera",
+  season==2 ~ "Verano",
+  season==3 ~ "Otono",
+  season==4 ~ "Invierno",
+  )
+ ) %>%
+  mutate(ypos=cumsum())
+  group_by(temporada) %>%  #agrpalo por las siguiente columna
+  summarise(suma = sum(cnt)) %>%
+  arrange(desc(suma))
+ds3
+
+
+ggplot(ds3, aes(y=suma, x=factor(temporada), fill =suma)) +
+  # que tipo de grafico quiero
+  geom_bar(position = "dodge", stat = "identity")+
+  #titulos descriptivos
+  labs(title="Cantidad de Rentas Por Mes", y = "Cantidad", x= "Temporada") +
+  # el texto asignado a las figuras 
+  geom_text(aes(label=suma), vjust= 1.6, color = "white", size=2.5) +
+  theme_minimal()
+
+
+ggplot(ds3, aes(y=suma, x="" ,fill =temporada)) +
+  # que tipo de grafico quiero
+  geom_bar(stat = "identity", width=1)+
+  coord_polar("y", start=0)+
+  theme_void()+
+  theme(legend.position = "none")+
+  geom_text(aes(label= suma), color =" white", size =5)+
+  scale_fill_brewer(palette = "Set1")
+```
+# A que temperatura baja la demanda
+```{r}
+ds4 <- dataset %>% 
+        group_by(temp) %>%  #agrpalo por las siguiente columna
+        summarise(suma = sum(cnt)) %>%
+        arrange(desc(suma))%>%
+  ggplot(aes(x=temp, y=suma, label=temp))+
+  geom_line()+
+  theme_minimal()
+  
+ds4
+```
+
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+

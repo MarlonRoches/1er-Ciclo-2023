@@ -1,0 +1,512 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Laboratorio Dplyr \#1 Marlon Roches 1250918},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Laboratorio Dplyr \#1 Marlon Roches 1250918}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \FunctionTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \FunctionTok{library}\NormalTok{(nycflights13)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  flights}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 336,776 x 19
+##     year month   day dep_time sched_de~1 dep_d~2 arr_t~3 sched~4 arr_d~5 carrier
+##    <int> <int> <int>    <int>      <int>   <dbl>   <int>   <int>   <dbl> <chr>  
+##  1  2013     1     1      517        515       2     830     819      11 UA     
+##  2  2013     1     1      533        529       4     850     830      20 UA     
+##  3  2013     1     1      542        540       2     923     850      33 AA     
+##  4  2013     1     1      544        545      -1    1004    1022     -18 B6     
+##  5  2013     1     1      554        600      -6     812     837     -25 DL     
+##  6  2013     1     1      554        558      -4     740     728      12 UA     
+##  7  2013     1     1      555        600      -5     913     854      19 B6     
+##  8  2013     1     1      557        600      -3     709     723     -14 EV     
+##  9  2013     1     1      557        600      -3     838     846      -8 B6     
+## 10  2013     1     1      558        600      -2     753     745       8 AA     
+## # ... with 336,766 more rows, 9 more variables: flight <int>, tailnum <chr>,
+## #   origin <chr>, dest <chr>, air_time <dbl>, distance <dbl>, hour <dbl>,
+## #   minute <dbl>, time_hour <dttm>, and abbreviated variable names
+## #   1: sched_dep_time, 2: dep_delay, 3: arr_time, 4: sched_arr_time,
+## #   5: arr_delay
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \FunctionTok{glimpse}\NormalTok{(flights)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 336,776
+## Columns: 19
+## $ year           <int> 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2~
+## $ month          <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1~
+## $ day            <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1~
+## $ dep_time       <int> 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, ~
+## $ sched_dep_time <int> 515, 529, 540, 545, 600, 558, 600, 600, 600, 600, 600, ~
+## $ dep_delay      <dbl> 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1~
+## $ arr_time       <int> 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849,~
+## $ sched_arr_time <int> 819, 830, 850, 1022, 837, 728, 854, 723, 846, 745, 851,~
+## $ arr_delay      <dbl> 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -1~
+## $ carrier        <chr> "UA", "UA", "AA", "B6", "DL", "UA", "B6", "EV", "B6", "~
+## $ flight         <int> 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79, 301, 4~
+## $ tailnum        <chr> "N14228", "N24211", "N619AA", "N804JB", "N668DN", "N394~
+## $ origin         <chr> "EWR", "LGA", "JFK", "JFK", "LGA", "EWR", "EWR", "LGA",~
+## $ dest           <chr> "IAH", "IAH", "MIA", "BQN", "ATL", "ORD", "FLL", "IAD",~
+## $ air_time       <dbl> 227, 227, 160, 183, 116, 150, 158, 53, 140, 138, 149, 1~
+## $ distance       <dbl> 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 944, 733, ~
+## $ hour           <dbl> 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6~
+## $ minute         <dbl> 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59, 0~
+## $ time_hour      <dttm> 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0~
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  flights}\SpecialCharTok{$}\NormalTok{carrier }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(flights}\SpecialCharTok{$}\NormalTok{carrier)}
+  \FunctionTok{glimpse}\NormalTok{(flights) }\CommentTok{\#convierte un conjunto de valores en una lista de valores}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 336,776
+## Columns: 19
+## $ year           <int> 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2~
+## $ month          <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1~
+## $ day            <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1~
+## $ dep_time       <int> 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, ~
+## $ sched_dep_time <int> 515, 529, 540, 545, 600, 558, 600, 600, 600, 600, 600, ~
+## $ dep_delay      <dbl> 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1~
+## $ arr_time       <int> 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849,~
+## $ sched_arr_time <int> 819, 830, 850, 1022, 837, 728, 854, 723, 846, 745, 851,~
+## $ arr_delay      <dbl> 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -1~
+## $ carrier        <fct> UA, UA, AA, B6, DL, UA, B6, EV, B6, AA, B6, B6, UA, UA,~
+## $ flight         <int> 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79, 301, 4~
+## $ tailnum        <chr> "N14228", "N24211", "N619AA", "N804JB", "N668DN", "N394~
+## $ origin         <chr> "EWR", "LGA", "JFK", "JFK", "LGA", "EWR", "EWR", "LGA",~
+## $ dest           <chr> "IAH", "IAH", "MIA", "BQN", "ATL", "ORD", "FLL", "IAD",~
+## $ air_time       <dbl> 227, 227, 160, 183, 116, 150, 158, 53, 140, 138, 149, 1~
+## $ distance       <dbl> 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 944, 733, ~
+## $ hour           <dbl> 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6~
+## $ minute         <dbl> 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59, 0~
+## $ time_hour      <dttm> 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0~
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  data }\OtherTok{\textless{}{-}} \FunctionTok{select}\NormalTok{(flights, origin,dest) }\CommentTok{\#selección de datos según "fuente" seguido de datos            seleccionados}
+\NormalTok{  data}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 336,776 x 2
+##    origin dest 
+##    <chr>  <chr>
+##  1 EWR    IAH  
+##  2 LGA    IAH  
+##  3 JFK    MIA  
+##  4 JFK    BQN  
+##  5 LGA    ATL  
+##  6 EWR    ORD  
+##  7 EWR    FLL  
+##  8 LGA    IAD  
+##  9 JFK    MCO  
+## 10 LGA    ORD  
+## # ... with 336,766 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  flights }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\#se utiliza para igualar la siguiente operación a con la variable actual}
+      \FunctionTok{select}\NormalTok{(}\FunctionTok{ends\_with}\NormalTok{(}\StringTok{\textquotesingle{}time\textquotesingle{}}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 336,776 x 5
+##    dep_time sched_dep_time arr_time sched_arr_time air_time
+##       <int>          <int>    <int>          <int>    <dbl>
+##  1      517            515      830            819      227
+##  2      533            529      850            830      227
+##  3      542            540      923            850      160
+##  4      544            545     1004           1022      183
+##  5      554            600      812            837      116
+##  6      554            558      740            728      150
+##  7      555            600      913            854      158
+##  8      557            600      709            723       53
+##  9      557            600      838            846      140
+## 10      558            600      753            745      138
+## # ... with 336,766 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  dataset1 }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(flights}\SpecialCharTok{$}\NormalTok{origin)}
+\NormalTok{  dataset1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##    EWR    JFK    LGA 
+## 120835 111279 104662
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \FunctionTok{prop.table}\NormalTok{(}\FunctionTok{table}\NormalTok{(flights}\SpecialCharTok{$}\NormalTok{origin))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##       EWR       JFK       LGA 
+## 0.3587993 0.3304244 0.3107763
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  dep\_delays }\OtherTok{\textless{}{-}}\NormalTok{ flights }\SpecialCharTok{\%\textgreater{}\%}
+                \FunctionTok{filter}\NormalTok{(dep\_delay }\SpecialCharTok{\textgreater{}=} \DecValTok{60}\NormalTok{)}
+
+  \FunctionTok{nrow}\NormalTok{(dep\_delays)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 27059
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  dep\_delays}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 27,059 x 19
+##     year month   day dep_time sched_de~1 dep_d~2 arr_t~3 sched~4 arr_d~5 carrier
+##    <int> <int> <int>    <int>      <int>   <dbl>   <int>   <int>   <dbl> <fct>  
+##  1  2013     1     1      811        630     101    1047     830     137 MQ     
+##  2  2013     1     1      826        715      71    1136    1045      51 AA     
+##  3  2013     1     1      848       1835     853    1001    1950     851 MQ     
+##  4  2013     1     1      957        733     144    1056     853     123 UA     
+##  5  2013     1     1     1114        900     134    1447    1222     145 UA     
+##  6  2013     1     1     1120        944      96    1331    1213      78 EV     
+##  7  2013     1     1     1301       1150      71    1518    1345      93 MQ     
+##  8  2013     1     1     1337       1220      77    1649    1531      78 B6     
+##  9  2013     1     1     1400       1250      70    1645    1502     103 EV     
+## 10  2013     1     1     1505       1310     115    1638    1431     127 EV     
+## # ... with 27,049 more rows, 9 more variables: flight <int>, tailnum <chr>,
+## #   origin <chr>, dest <chr>, air_time <dbl>, distance <dbl>, hour <dbl>,
+## #   minute <dbl>, time_hour <dttm>, and abbreviated variable names
+## #   1: sched_dep_time, 2: dep_delay, 3: arr_time, 4: sched_arr_time,
+## #   5: arr_delay
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  arr\_delay }\OtherTok{\textless{}{-}}\NormalTok{ flights }\SpecialCharTok{\%\textgreater{}\%}
+                \FunctionTok{filter}\NormalTok{(arr\_delay }\SpecialCharTok{\textgreater{}=} \DecValTok{60}\NormalTok{)}
+
+  \FunctionTok{nrow}\NormalTok{(arr\_delay)  }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 28317
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  arr\_delay}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 28,317 x 19
+##     year month   day dep_time sched_de~1 dep_d~2 arr_t~3 sched~4 arr_d~5 carrier
+##    <int> <int> <int>    <int>      <int>   <dbl>   <int>   <int>   <dbl> <fct>  
+##  1  2013     1     1      811        630     101    1047     830     137 MQ     
+##  2  2013     1     1      848       1835     853    1001    1950     851 MQ     
+##  3  2013     1     1      957        733     144    1056     853     123 UA     
+##  4  2013     1     1     1114        900     134    1447    1222     145 UA     
+##  5  2013     1     1     1120        944      96    1331    1213      78 EV     
+##  6  2013     1     1     1255       1200      55    1451    1330      81 MQ     
+##  7  2013     1     1     1301       1150      71    1518    1345      93 MQ     
+##  8  2013     1     1     1337       1220      77    1649    1531      78 B6     
+##  9  2013     1     1     1342       1320      22    1617    1504      73 EV     
+## 10  2013     1     1     1356       1259      57    1538    1438      60 UA     
+## # ... with 28,307 more rows, 9 more variables: flight <int>, tailnum <chr>,
+## #   origin <chr>, dest <chr>, air_time <dbl>, distance <dbl>, hour <dbl>,
+## #   minute <dbl>, time_hour <dttm>, and abbreviated variable names
+## #   1: sched_dep_time, 2: dep_delay, 3: arr_time, 4: sched_arr_time,
+## #   5: arr_delay
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  flights }\SpecialCharTok{\%\textgreater{}\%}
+      \FunctionTok{filter}\NormalTok{(carrier }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"UA"}\NormalTok{, }\StringTok{"AA"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 91,394 x 19
+##     year month   day dep_time sched_de~1 dep_d~2 arr_t~3 sched~4 arr_d~5 carrier
+##    <int> <int> <int>    <int>      <int>   <dbl>   <int>   <int>   <dbl> <fct>  
+##  1  2013     1     1      517        515       2     830     819      11 UA     
+##  2  2013     1     1      533        529       4     850     830      20 UA     
+##  3  2013     1     1      542        540       2     923     850      33 AA     
+##  4  2013     1     1      554        558      -4     740     728      12 UA     
+##  5  2013     1     1      558        600      -2     753     745       8 AA     
+##  6  2013     1     1      558        600      -2     924     917       7 UA     
+##  7  2013     1     1      558        600      -2     923     937     -14 UA     
+##  8  2013     1     1      559        600      -1     941     910      31 AA     
+##  9  2013     1     1      559        600      -1     854     902      -8 UA     
+## 10  2013     1     1      606        610      -4     858     910     -12 AA     
+## # ... with 91,384 more rows, 9 more variables: flight <int>, tailnum <chr>,
+## #   origin <chr>, dest <chr>, air_time <dbl>, distance <dbl>, hour <dbl>,
+## #   minute <dbl>, time_hour <dttm>, and abbreviated variable names
+## #   1: sched_dep_time, 2: dep_delay, 3: arr_time, 4: sched_arr_time,
+## #   5: arr_delay
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  data }\OtherTok{\textless{}{-}}\NormalTok{ flights }\SpecialCharTok{\%\textgreater{}\%}
+      \FunctionTok{filter}\NormalTok{(hour }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\SpecialCharTok{:}\DecValTok{4}\NormalTok{))}
+
+\FunctionTok{table}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{hour)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## 1 
+## 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  flights }\OtherTok{\textless{}{-}}\NormalTok{ flights }\SpecialCharTok{\%\textgreater{}\%}
+                  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{velocidad=}\NormalTok{(distance}\SpecialCharTok{/}\FloatTok{1.605}\NormalTok{)}\SpecialCharTok{/}\NormalTok{(air\_time}\SpecialCharTok{/}\DecValTok{60}\NormalTok{))}
+\NormalTok{  flights}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 336,776 x 20
+##     year month   day dep_time sched_de~1 dep_d~2 arr_t~3 sched~4 arr_d~5 carrier
+##    <int> <int> <int>    <int>      <int>   <dbl>   <int>   <int>   <dbl> <fct>  
+##  1  2013     1     1      517        515       2     830     819      11 UA     
+##  2  2013     1     1      533        529       4     850     830      20 UA     
+##  3  2013     1     1      542        540       2     923     850      33 AA     
+##  4  2013     1     1      544        545      -1    1004    1022     -18 B6     
+##  5  2013     1     1      554        600      -6     812     837     -25 DL     
+##  6  2013     1     1      554        558      -4     740     728      12 UA     
+##  7  2013     1     1      555        600      -5     913     854      19 B6     
+##  8  2013     1     1      557        600      -3     709     723     -14 EV     
+##  9  2013     1     1      557        600      -3     838     846      -8 B6     
+## 10  2013     1     1      558        600      -2     753     745       8 AA     
+## # ... with 336,766 more rows, 10 more variables: flight <int>, tailnum <chr>,
+## #   origin <chr>, dest <chr>, air_time <dbl>, distance <dbl>, hour <dbl>,
+## #   minute <dbl>, time_hour <dttm>, velocidad <dbl>, and abbreviated variable
+## #   names 1: sched_dep_time, 2: dep_delay, 3: arr_time, 4: sched_arr_time,
+## #   5: arr_delay
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \FunctionTok{glimpse}\NormalTok{(flights)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 336,776
+## Columns: 20
+## $ year           <int> 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2~
+## $ month          <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1~
+## $ day            <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1~
+## $ dep_time       <int> 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, ~
+## $ sched_dep_time <int> 515, 529, 540, 545, 600, 558, 600, 600, 600, 600, 600, ~
+## $ dep_delay      <dbl> 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1~
+## $ arr_time       <int> 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849,~
+## $ sched_arr_time <int> 819, 830, 850, 1022, 837, 728, 854, 723, 846, 745, 851,~
+## $ arr_delay      <dbl> 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -1~
+## $ carrier        <fct> UA, UA, AA, B6, DL, UA, B6, EV, B6, AA, B6, B6, UA, UA,~
+## $ flight         <int> 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79, 301, 4~
+## $ tailnum        <chr> "N14228", "N24211", "N619AA", "N804JB", "N668DN", "N394~
+## $ origin         <chr> "EWR", "LGA", "JFK", "JFK", "LGA", "EWR", "EWR", "LGA",~
+## $ dest           <chr> "IAH", "IAH", "MIA", "BQN", "ATL", "ORD", "FLL", "IAD",~
+## $ air_time       <dbl> 227, 227, 160, 183, 116, 150, 158, 53, 140, 138, 149, 1~
+## $ distance       <dbl> 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 944, 733, ~
+## $ hour           <dbl> 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6~
+## $ minute         <dbl> 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59, 0~
+## $ time_hour      <dttm> 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0~
+## $ velocidad      <dbl> 230.5570, 233.1920, 254.4393, 321.9447, 245.5688, 179.1~
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \FunctionTok{library}\NormalTok{(ggplot2)}
+
+\NormalTok{  flights }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{arr\_delay,}\AttributeTok{y=}\NormalTok{..density..)) }\SpecialCharTok{+} 
+    \FunctionTok{geom\_density}\NormalTok{(}\AttributeTok{col=}\StringTok{"red"}\NormalTok{, }\AttributeTok{fill=}\StringTok{"pink"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{xlab}\NormalTok{(}\StringTok{"minutos"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{ylab}\NormalTok{(}\StringTok{"densidad"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{theme\_classic}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: The dot-dot notation (`..density..`) was deprecated in ggplot2 3.4.0.
+## i Please use `after_stat(density)` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Removed 9430 rows containing non-finite values (`stat_density()`).
+\end{verbatim}
+
+\includegraphics{LAB-Dplyr_files/figure-latex/unnamed-chunk-12-1.pdf}
+
+\end{document}

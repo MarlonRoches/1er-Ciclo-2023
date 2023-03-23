@@ -21,3 +21,18 @@ Va en este orden:
 - Proc Block: Son las que estan bloqueados.
 - Cont: Es la pila que guarda todos los procesos y se envarga de moverlos de una pila a otra.
 ![Proceso](./Images/Tipos%20Pila.jpg)
+
+
+
+# Comunicacion entre procesos
+Comunicacion entre 2 procesos que intercambian informacion:
+- Local:
+
+    - Transferencia de informacion entre procesos que comparten entorno. En un mismo sistema operativo.
+
+
+- Remota:
+    - Transferencia de informacion entre los procesos.  Sobre diferentes sistemas operativo.
+
+# Señales
+Son alertas que solo permiten enviar

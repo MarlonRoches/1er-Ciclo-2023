@@ -1,0 +1,86 @@
+---
+title: 'Laboratorio Dplyr #1 Marlon Roches 1250918'
+output:
+  html_notebook: default
+  pdf_document: default
+---
+
+```{r}
+  library(dplyr)
+  library(nycflights13)
+```
+
+
+```{r}
+  flights
+  glimpse(flights)
+```
+
+```{r}
+  flights$carrier <- factor(flights$carrier)
+  glimpse(flights) 
+```
+
+```{r}
+  data <- select(flights, origin,dest)
+  data
+```
+
+```{r}
+  flights %>% 
+      select(ends_with('time'))
+```
+
+```{r}
+  dataset1 <- table(flights$origin)
+  dataset1
+  
+  prop.table(table(flights$origin))
+```
+
+```{r}
+  dep_delays <- flights %>%
+                filter(dep_delay >= 60)
+
+  nrow(dep_delays)
+  dep_delays
+```
+
+```{r}
+  arr_delay <- flights %>%
+                filter(arr_delay >= 60)
+
+  nrow(arr_delay)  
+  arr_delay
+```
+
+```{r}
+  flights %>%
+      filter(carrier %in% c("UA", "AA"))
+```
+
+```{r}
+  data <- flights %>%
+      filter(hour %in% c(0:4))
+
+table(data$hour)
+```
+
+```{r}
+  flights <- flights %>%
+                  mutate(velocidad=(distance/1.605)/(air_time/60))
+  flights
+  glimpse(flights)
+```
+
+```{r}
+  library(ggplot2)
+
+  flights %>%
+    ggplot(aes(x=arr_delay,y=..density..)) + 
+    geom_density(col="red", fill="pink") +
+    xlab("minutos") +
+    ylab("densidad") +
+    theme_classic()
+```
+

@@ -65,6 +65,12 @@ class(gatos)
 typeof(gatos$color)
 
 ```
+```{r}
+library(ggplot2)
+
+flights
+```
+
 
 
 When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
