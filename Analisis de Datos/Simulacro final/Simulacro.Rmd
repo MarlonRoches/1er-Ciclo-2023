@@ -1,0 +1,213 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library("corrplot")
+library("RColorBrewer")
+
+```
+
+
+```{r}
+datasetOriginal <- read.csv("compradoresbicis.csv", header = T, na.strings = "")
+head(datasetOriginal)
+
+# Set de datos de los clientes que almenos han cotiado una bicicleta
+#variable objetivo, purchased bike por que el dataset se orienta hasta este caso 
+# regresion logistica, esperamos una dato binario de retorno
+```
+
+
+```{r}
+summary(datasetOriginal)
+```
+
+
+```{r}
+dstest <- datasetOriginal
+
+dstest$Marital.Status <- as.factor(dstest$Marital.Status) #detecta las opociones de la columna y las itera para que no sean strings
+dstest$Gender <- as.factor(dstest$Gender)
+dstest$Home.Owner <- as.factor(dstest$Home.Owner)
+dstest$Purchased.Bike <- as.factor(dstest$Purchased.Bike)
+dstest$Occupation <- as.factor(dstest$Occupation)
+dstest$Commute.Distance <- as.factor(dstest$Commute.Distance)
+dstest$Region <- as.factor(dstest$Region)
+dstest$Education <- as.factor(dstest$Education)
+
+
+```
+
+```{r}
+str(dstest)
+summaru
+```
+```{r}
+colSums(is.na(dstest)) # detectamos los nulos
+# si los NAs. son muy altos, las exluimos
+# tolerancia de un 5% nulls en la columna
+```
+```{r}
+summary(dstest)
+```
+# Limpieza de NAs Numericos
+
+```{r}
+hist(dstest$Income)
+hist(dstest$Children)
+hist(dstest$Cars)
+hist(dstest$Age)
+
+```
+```{r}
+# generalmente se sustituye los NAs por la mediana
+# Si la media < mediana, se toma la media
+# tomamos el menor de los 2 siempre
+print("Mediana Age: ")
+median(na.omit(dstest$Age))
+print("Media Age: " )
+mean(na.omit(dstest$Age))
+
+print("Mediana Income ")
+median(na.omit(dstest$Income))
+print("Media Income: ")
+ mean(na.omit(dstest$Income))
+
+```
+```{r}
+# sustituir valores NA
+dstest$Income[is.na(dstest$Income)] <- mean(na.omit(dstest$Income))
+
+dstest$Age[is.na(dstest$Age)] <- mean(na.omit(dstest$Age))
+
+```
+
+```{r}
+getmode <- function(x){
+  unique_x <- unique(x)
+  tabulaate_x <- tabulate(match(x, unique_x))
+  unique_x <- [tabulaate_x == max(tabulate_x)]
+}
+
+dstest$Marital.Status[is.na(dstest)]
+```
+
+```{r}
+
+devtools::install_github("UBC-MDS/encodeR")
+```
+
+```{r}
+library(encodeR)
+dstest2 <- dstest
+
+```
+
+```{r}
+# clasificacion binaria mas facil
+dstest2$Purchased.Bike <- ifelse(dstest2$Purchased.Bike == "Yes",1,0)
+
+dstest2 <- target_encoder(dstest2, y = dstest2$Purchased.Bike,prior = 0.8, objective = "regression",
+                           
+                           cat_columns = c( "Marital.Status",
+                   "Gender", "Education", "Occupation", "Commute.Distance", "Region", "Home.Owner")
+                           )
+dstest2
+
+```
+```{r}
+write.csv(dstest2, "compradoresbicis_numeric.csv", quote = FALSE, row.names = TRUE)
+```
+
+```{r}
+#dstest2<- read.csv("compradoresbicis_numeric.csv")
+dstest2 <- as.data.frame(dstest2)
+summary(dstest2)
+```
+```{r}
+#dstest2$train.Income = dstest2$Income
+
+dstest2$train.Income =(dstest2$train.Income- mean(dstest2$train.Income)) / 
+  #SD Desviacion estandard
+  sd(dstest2$train.Income)
+
+# (xi - media) / desvest
+
+```
+
+```{r}
+library(GGally)
+library(ggplot2)
+#convert data to numeric
+cor(dstest2)
+corr <- dstest2
+ggcorr(corr,
+       method = c("pairwise", "spearman"),
+       nbreaks = 6,
+       hjust = 0.8,
+       label = TRUE,
+       label_size = 3,
+       color= "grey50"
+         
+         )
+```
+
+```{r}
+#80% entreno y 20% validacion
+
+set.seed(1234)
+
+create_train_test <- function(data,size=0.8, train=TRUE){
+  n_row = nrow(data)
+  total_row = size* n_row
+  train_sample <- 1: total_row
+  if(train == TRUE)
+  {
+    return (data[train_sample,])
+  }else{
+    return (data[-train_sample,])
+  }
+}
+
+  data_train <- create_train_test(dstest2, 0.8, train = TRUE)
+data_test <- create_train_test(dstest2, 0.8, train = FALSE)
+dim(data_train)
+dim(data_test)
+```
+```{r}
+write.csv(d)
+```
+```{r}
+model <- glm(train.Purchased.Bike∼train.Commute.Distance+train.Educaation,data_train, family = binomial())
+summary(model)
+```
+
+```{r}
+#AIC 1084.7
+#mientras mas cercano sea a 0, el modelo es mejor
+
+```
+
+```{r}
+preditc <- predict(model, datas_test, type ="response")
+#confusion matrix
+table_mat <- table(data_test$train.Purchased.Bike, predict>0.5)
+table_mat
+```
+```{r}
+#Precicion del modelo
+#accuracy = (TP + TN)/ (TP+TF+FP+FN)
+```
+```{r}
+accuracy_Test <- sum(diag(table_mat)/ sub(table_mat))
+accuracy_Test
+```
+

@@ -16,7 +16,7 @@ dataset <- read.csv2("hour.csv")  # csv 2 separa los datos automaticamente
 
 dataset
 ```
-# que mes es el que tiene mayor demanda del servicio?
+# 1 que mes es el que tiene mayor demanda del servicio?
 
 ```{r}
 ds1 <- dataset %>% 
@@ -40,7 +40,7 @@ ggplot(ds1, aes(y=suma, x=factor(mnth), fill =suma)) +
 
 
 
-# que hora es la de mayor demanda
+# 2 que hora es la de mayor demanda
 ```{r}
 ds2 <- dataset %>% 
         group_by(hr) %>%  #agrpalo por las siguiente columna
@@ -61,55 +61,179 @@ ggplot(ds2, aes(y=suma, x=factor(hr), fill =suma)) +
   geom_text(aes(label=suma), vjust= 1.6, color = "white", size=2.5) +
   theme_minimal()
 ```
-# Que temporada es la mas alta
+# 3 Que temporada es la mas alta
 ```{r}
-ds3 <- dataset %>% 
-  select(season, cnt) %>%
-  mutate(temporada = case_when(
-  season==1 ~ "Primavera",
-  season==2 ~ "Verano",
-  season==3 ~ "Otono",
-  season==4 ~ "Invierno",
-  )
- ) %>%
-  mutate(ypos=cumsum())
-  group_by(temporada) %>%  #agrpalo por las siguiente columna
-  summarise(suma = sum(cnt)) %>%
-  arrange(desc(suma))
-ds3
-
-
-ggplot(ds3, aes(y=suma, x=factor(temporada), fill =suma)) +
-  # que tipo de grafico quiero
-  geom_bar(position = "dodge", stat = "identity")+
-  #titulos descriptivos
-  labs(title="Cantidad de Rentas Por Mes", y = "Cantidad", x= "Temporada") +
-  # el texto asignado a las figuras 
-  geom_text(aes(label=suma), vjust= 1.6, color = "white", size=2.5) +
-  theme_minimal()
-
-
-ggplot(ds3, aes(y=suma, x="" ,fill =temporada)) +
-  # que tipo de grafico quiero
-  geom_bar(stat = "identity", width=1)+
-  coord_polar("y", start=0)+
-  theme_void()+
-  theme(legend.position = "none")+
-  geom_text(aes(label= suma), color =" white", size =5)+
-  scale_fill_brewer(palette = "Set1")
+datos3 <- data.frame(dataset)
+datos3 %>%
+  group_by(season) %>%
+  summarise(total_cnt = sum(cnt)) %>%
+  ggplot(aes(x = factor(season), y = total_cnt, fill = factor(season))) +
+  geom_bar(stat = "identity") +
+  labs(x = "Temporada", y = "Total de cnt", fill = "Temporada") +
+  ggtitle("Total de cnt por temporada")
 ```
-# A que temperatura baja la demanda
+# 4 A que temperatura baja la demanda
 ```{r}
-ds4 <- dataset %>% 
-        group_by(temp) %>%  #agrpalo por las siguiente columna
-        summarise(suma = sum(cnt)) %>%
-        arrange(desc(suma))%>%
-  ggplot(aes(x=temp, y=suma, label=temp))+
-  geom_line()+
-  theme_minimal()
-  
-ds4
+datos4 <- data.frame(dataset)
+
+datos4 %>%
+  mutate(temp = as.numeric(as.character(temp))) %>%
+  group_by(mnth) %>%
+  summarise(temp_promedio = mean(temp, na.rm = TRUE)) %>%
+  ggplot(aes(x = mnth, y = temp_promedio)) +
+  geom_line() +
+  labs(title = "Temperatura promedio a lo largo del año",
+       x = "Mes",
+       y = "Temperatura promedio")
 ```
+
+#5 ¿A que humedad baja la demanda? 
+```{r}
+datos5 <- data.frame(dataset)
+
+
+datos5 %>%
+  mutate(hum = as.numeric(as.character(hum))) %>%
+  summarise(hum_promedio_baja_demanda = mean(hum, na.rm = TRUE))
+datos5 %>%
+  mutate(hum = as.numeric(as.character(hum))) %>%
+  group_by(mnth) %>%
+  summarise(hum_promedio = mean(hum, na.rm = TRUE)) %>%
+  ggplot(aes(x = mnth, y = hum_promedio)) +
+  geom_line() +
+  labs(title = "Humedad promedio a lo largo del año",
+       x = "Mes",
+       y = "Humedad promedio")
+
+
+```
+
+#6  ¿Que condiciones climáticas(weather) serian ideales para nuestra demanda? 
+## (considere una función de densidad bivariable) 
+```{r}
+# Crear un gráfico de densidad bivariable de temperatura y humedad
+ggplot(dataset, aes(x = temp, y = hum)) +
+  geom_density_2d_filled(alpha = 0.7) +
+  scale_fill_gradient(low = "blue", high = "red", na.value = "transparent") +
+  labs(title = "Condiciones climáticas ideales para la demanda",
+       x = "Temperatura (Celsius)",
+       y = "Humedad relativa")
+
+
+
+```
+
+
+#7  Mueste una gráfica de la densidad de rentas.
+```{r}
+ggplot(dataset, aes(x = cnt)) +
+  geom_density() +
+  labs(title = "Densidad de Rentas", x = "Rentas", y = "Densidad")
+```
+
+
+#8 Determine promedio de personas que rentan bicicletas y están registradas. 
+
+```{r}
+# Crear columna con el promedio de personas registradas que rentan bicicletas
+dataset$promedio_personas <- dataset$registered / dataset$cnt
+promedio_registrados <- mean(dataset$registered)
+promedio_registrados
+# Crear histograma
+library(ggplot2)
+ggplot(dataset, aes(x = promedio_personas)) + 
+  geom_histogram(bins = 50, color = "black", fill = "lightblue") +
+  labs(x = "Promedio de personas registradas que rentan bicicletas", y = "Frecuencia") +
+  ggtitle("Histograma del promedio de personas registradas que rentan bicicletas")
+
+```
+
+
+#9 Determine la mediana de personas que rentan bicicletas y no están registradas.
+
+```{r}
+datos9 <- data.frame(dataset)
+datos9 %>%
+  filter(registered == 0) %>%
+  summarize(mediana = median(cnt))
+
+datos9 %>%
+  filter(registered == 0) %>%
+  ggplot(aes(x = "", y = cnt)) +
+  geom_boxplot() +
+  ggtitle("Distribución de cnt para registered=0") +
+  ylab("cnt") +
+  xlab("") 
+```
+
+
+#10. Deterimne la renta total, renta promedio por cada tipo de condición climática. 
+
+```{r}
+renta_clima <- aggregate(cnt ~ weathersit, data = dataset, FUN = mean)
+
+# Graficamos la renta promedio por tipo de clima
+ggplot(renta_clima, aes(x = factor(weathersit), y = cnt)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  labs(x = "Tipo de clima", y = "Renta promedio") +
+  ggtitle("Renta promedio por tipo de clima") +
+  theme_bw()
+
+```
+
+
+#11. Determine y muestre una gráfica de barras de cada renta por tipo de temporada. 
+
+```{r}
+rentas_temporadas <- aggregate(cnt ~ season, data = dataset, FUN = sum)
+
+ggplot(rentas_temporadas, aes(x = factor(season), y = cnt)) +
+  geom_bar(stat = "identity", fill = "blue") +
+  labs(x = "Temporada", y = "Renta Total", title = "Renta Total por Temporada")
+```
+
+#12. Muestre una gráfica de la densidad por hora. 
+
+```{r}
+datos12 <- data.frame(dataset)
+
+ggplot(datos12, aes(x = hr, fill = season)) +
+  geom_histogram(alpha = 0.5, position = "identity", bins = 24, aes(y = ..density..)) +
+  scale_fill_discrete(name = "Season", labels = c("Spring", "Summer", "Fall", "Winter")) +
+  labs(x = "Hour of the day", y = "Density") +
+  theme_bw()
+```
+
+#13. Muestre una gráfica de barras por día del mes como eje x y la cantidad total de alquileres como el eje Y.
+```{r}
+datos12 <- data.frame(dataset)
+
+# Convertir la columna "dteday" en formato de fecha
+datos12$dteday <- as.Date(datos12$dteday, format="%d/%m/%y")
+
+# Crear una nueva columna con el día del mes
+datos12$day <- as.integer(format(datos12$dteday, "%d"))
+
+# Agrupar por día del mes y sumar la columna "cnt"
+total_rentals_per_day <- aggregate(cnt ~ day, data=datos12, sum)
+
+# Crear la gráfica de barras
+ggplot(total_rentals_per_day, aes(x=day, y=cnt)) +
+  geom_bar(stat="identity", fill="blue") +
+  labs(title="Cantidad total de alquileres por día del mes",
+       x="Día del mes", y="Cantidad total de alquileres")
+```
+
+#14
+```{r}
+
+```
+
+#
+```{r}
+
+```
+
 
 
 This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 

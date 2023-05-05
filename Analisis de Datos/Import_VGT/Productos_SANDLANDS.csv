@@ -1,0 +1,6 @@
+Id_Producto;Código_Producto;Descripción;Categoría;Fecha de Ingreso;Fecha de Vencimiento;Precio unitario $;Precio unitario Q
+2001001;PRD-2001;Vino tipo A;Sandlands Clase A;N/C;N/C;20;160
+2001002;PRD-2002;Vino tipo B;Sandlands Clase B;N/C;N/C;24;192
+2001003;PRD-2003;Vino tipo C;Sandlands Clase C;N/C;N/C;32;256
+2001004;PRD-2004;Vino tipo D;Sandlands Clase D;N/C;N/C;50;400
+2001005;PRD-2005;Vino tipo E;Sandlands Clase E;N/C;N/C;75;600

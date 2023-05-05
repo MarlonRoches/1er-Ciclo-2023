@@ -1,0 +1,6 @@
+Id_Producto;Código_Producto;Descripción;Categoría;Fecha de Ingreso;Fecha de Vencimiento;Precio unitario $
+2001001;PRD-2001;Vino tipo A;Vinos GT Clase A;5/01/2023;N/C;15
+2001002;PRD-2002;Vino tipo B;Vinos GT Clase B;5/01/2023;N/C;17
+2001003;PRD-2003;Vino tipo C;Vinos GT Clase C;5/01/2023;N/C;20
+2001004;PRD-2004;Vino tipo D;Vinos GT Clase D;5/01/2023;N/C;22
+2001005;PRD-2005;Vino tipo E;Vinos GT Clase E;5/01/2023;N/C;24

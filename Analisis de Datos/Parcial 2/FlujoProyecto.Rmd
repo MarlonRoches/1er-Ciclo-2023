@@ -1,0 +1,47 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+```{r}
+library("ggplot2")
+library("factoextra")
+```
+
+```{r}
+datasetOriginal <- read.csv("Mall_Customers.csv", header = T, na.strings = "")
+head(datasetOriginal)
+```
+# a)	De la base de datos llamada “Mall_Customers 5.csv” 
+## a.	Genere la estadística General de los datos. (se recomienda usar la funcion summary de R). 
+```{r}
+summary(datasetOriginal)
+```
+##b.	Efectue la limpieza de los datos según lo visto en las secciones de feature engineering en clase
+```{r}
+datasetClean1 <- (datasetOriginal)
+colnames(datasetClean1) <- c("ID", "Genero", "Edad", "Ingresos_anuales", "Puntuacion_gasto")
+
+datasetClean1$Genero <- as.factor(datasetClean1$Genero)
+datasetClean1$ID <- NULL
+
+
+str(datasetClean1)
+
+```
+# b. Determinar por medio del metodo del codo (elbow method) la cantidad de clusters optima para efectuar la segmentacion. (presente grafica con sus conclusiones de la cantidad de segmentos).
+```{r}
+# Seleccionamos las variables numéricas
+mall_data_clean <- datasetClean1
+mall_data_clean <- datasetClean1[,c("Edad", "Ingresos_anuales", "Puntuacion_gasto")]
+
+# Escalamos las variables
+mall_data_clean <- scale(mall_data_clean)
+# Aplicamos el método del codo
+fviz_nbclust(mall_data_clean, kmeans, method = "wss") + 
+  labs(title = "Método del codo", x = "Número de clusters (k)", y = "Suma de las distancias al cuadrado")
+```
+

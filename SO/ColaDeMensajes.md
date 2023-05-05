@@ -1,6 +1,6 @@
 # Colas De Mensajes 
-- Receptor:  Permite recibir el mensaje.
-- Emisor: Es el que envia el mensaje
+- Receptor (Recibe):  Permite recibir el mensaje.
+- Emisor (Send): Es el que envia el mensaje
 - Canales: 
     - Puertos
     - Sockets

@@ -1,0 +1,125 @@
+---
+title: "Examen final - Marlon Roches 1250918"
+output: html_notebook
+---
+
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library('corrplot')
+library('RColorBrewer')
+library(mgcv)
+
+create_train_test <- function(data, size = 0.8, train = TRUE) {
+    n_row = nrow(data)
+    total_row = size * n_row
+    train_sample <- 1: total_row
+    if (train == TRUE) {
+        return (data[train_sample, ])
+    } else {
+        return (data[-train_sample, ])
+    }
+}
+
+
+```
+
+#1. Evaluar y comprender el DATASET
+```{r}
+  datasetoriginal <- read.csv('ingredientes.csv',header=T,na.strings = '')
+  (datasetoriginal)
+```
+
+```{r}
+  str(datasetoriginal)
+```
+# EXPERIMENTO 1
+## Regresion lineal multiple
+
+```{r}
+# Copiando Data Sets
+EXP1 <- create_train_test(datasetoriginal, 0.8, train = TRUE)
+EXP1Test <- create_train_test(datasetoriginal, 0.8, train = FALSE)
+
+
+
+#EXP1Test
+# Modelo de regresion lineal multiple
+modelo <- lm(Cured ~ ., data = EXP1)
+#summary(modelo)
+predicciones <- predict(modelo, newdata = EXP1Test)
+
+#predicciones
+print("confusion_matrix")
+EXP1confusion_matrix <- table(EXP1Test$Cured, predict > 0.5)
+EXP1confusion_matrix
+print("accuracy_Test")
+
+accuracy_Test1 <- sum(diag(table_mat)) / sum(table_mat)
+accuracy_Test1
+```
+
+# Experimento 2
+## GLM: Técnica de modelado estadístico que se utiliza para modelar relaciones entre variables de respuesta y variables explicativas. En R, GLM es una función que se utiliza para ajustar modelos lineales generalizados. 
+```{r}
+
+EXP2 <- create_train_test(datasetoriginal, 0.8, train = TRUE)
+EXP2Test <- create_train_test(datasetoriginal, 0.8, train = FALSE)
+
+#EXP2
+#EXP2Test
+
+# Modelo general Lineal
+model <- glm(Cured~ . ,EXP2,family = binomial())
+#summary(model)
+  
+predict <- predict(model, EXP2Test, type = 'response')
+print("confusion_matrix")
+EXP2confusion_matrix <- table(EXP2Test$Cured, predict > 0.5)
+EXP2confusion_matrix
+print("accuracy_Test")
+
+accuracy_Test <- sum(diag(table_mat)) / sum(table_mat)
+accuracy_Test
+```
+
+
+# Experimento 3
+## Modelos lineales generalizados de suavizado (mgcv): Permite ajustar modelos lineales con términos suaves, lo que permite modelar relaciones no lineales entre las variables.
+
+```{r}
+
+
+EXP3 <- create_train_test(datasetoriginal, 0.8, train = TRUE)
+EXP3Test <- create_train_test(datasetoriginal, 0.8, train = FALSE)
+
+# ajustar el modelo con gam
+model_gam <- gam(Cured ~ s(Phoenix.Feather)+s(Unicorn.Horn)+s(Dragon.s.Blood)+s(Mermaid.Tears)+s(Fairy.Dust)+s(Goblin.Toes)+s(Witch.s.Brew)+s(Griffin.Claw)+s(Troll.Hair)+s(Goblin.Toes)+s(Witch.s.Brew)+s(Griffin.Claw)+s(Troll.Hair)+s(Kraken.Ink)+s(Minotaur.Horn)+s(Basilisk.Scale)+s(Chimera.Fang), data = EXP3, family = binomial())
+
+# obtener predicciones en el conjunto de prueba
+predictions <- predict(model_gam, newdata = EXP3Test, type = "response")
+
+# calcular la matriz de confusión y la precisión de clasificación
+EXP3confusion_matrix <- table(EXP3Test$Cured, predictions > 0.5)
+accuracy_Test <- sum(diag(EXP3confusion_matrix)) / sum(EXP3confusion_matrix)
+
+# imprimir resultados
+print("confusion_matrix")
+print(EXP3confusion_matrix)
+print("accuracy_Test")
+print(accuracy_Test)
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
