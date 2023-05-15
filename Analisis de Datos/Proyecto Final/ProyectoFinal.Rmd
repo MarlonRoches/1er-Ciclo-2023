@@ -1,0 +1,203 @@
+---
+title: "Proyecto Final - Titanic"
+output: html_notebook
+---
+
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library('corrplot')
+library('RColorBrewer')
+library(stringr)
+library(mgcv)
+
+create_train_test <- function(data, size = 0.8, train = TRUE) {
+    n_row = nrow(data)
+    total_row = size * n_row
+    train_sample <- 1: total_row
+    if (train == TRUE) {
+        return (data[train_sample, ])
+    } else {
+        return (data[-train_sample, ])
+    }
+}
+
+```
+
+```{r}
+  dsOriginal <- read.csv('data_titanic_proyecto.csv',header=T,na.strings = '')
+  datasetEvaluacion <- read.csv('evaluation_dataset.csv',header=T,na.strings = '')
+
+  dsOriginal
+```
+
+```{r}
+extract_titles <- function(data) {
+  require(stringr) # carga el paquete stringr
+  
+  # crea una nueva columna "Title" en el dataset
+  data$Title <- NA
+  
+  # crea un vector con las palabras que se consideran títulos de cortesía
+  title_words <- c("Mr\\.", "Mrs\\.", "Miss\\.", "Ms\\.", "Master\\.", "Rev\\.", "Dr\\.", "Capt\\.","Mme\\.","Major\\.", "Lady\\.", "Sir\\.", "Col\\.","Mlle\\.","Ms\\.", "Mme\\." ,"Jonkheer\\." ,"Dona\\.", "Countess\\.","Don\\.")
+  
+  # extrae los títulos de cortesía de la columna "Name" y los coloca en la columna "Title"
+  for (i in 1:nrow(data)) {
+    title <- str_extract(data[i, "Name"], paste(title_words, collapse = "|"))
+    if (!is.na(title)) {
+      data[i, "Title"] <- title
+    }
+  }
+  
+  return(data)
+}
+
+```
+
+
+```{r}
+dsClean<- (dsOriginal)
+#dsClean <- subset(dsOriginal, select = -PassengerId)
+
+dsClean <- extract_titles(dsClean)
+
+dsClean$Title <- as.factor(dsClean$Title)
+dsClean$passenger_class <- as.factor(dsClean$passenger_class)
+dsClean$passenger_sex <- as.factor(dsClean$passenger_sex)
+dsClean$passenger_survived <- as.factor(dsClean$passenger_survived)
+dsClean$Ticket <- as.factor(dsClean$Ticket)
+
+dsClean$Cabin <- ifelse(is.na(dsClean$Cabin), "SinInfo", dsClean$Cabin)
+dsClean$Cabin <- as.factor(dsClean$Cabin)
+dsClean$Embarked <- ifelse(is.na(dsClean$Embarked), "SinInfo", dsClean$Embarked)
+dsClean$Embarked <- as.factor(dsClean$Embarked)
+
+dsClean$Age <- ifelse(dsClean$Age == "NA", "-1", dsClean$Age)
+dsClean$Age <- as.double(dsClean$Age)
+dsClean$Age <- ifelse(dsClean$Age == -1, NA, dsClean$Age)
+
+dsClean
+
+
+
+# Calcular la media de edad para cada sexo
+mean_male_age <- mean(dsClean$Age[dsClean$passenger_sex == "M"], na.rm = TRUE)
+mean_female_age <- mean(dsClean$Age[dsClean$passenger_sex == "F"], na.rm = TRUE)
+
+
+mean_male_age
+mean_female_age
+# Sustituir los valores "NA" por la media de edad correspondiente al sexo
+dsClean$Age <- ifelse(is.na(dsClean$Age) & dsClean$passenger_sex == "M", mean_male_age, dsClean$Age)
+dsClean$Age <- ifelse(is.na(dsClean$Age) & dsClean$passenger_sex == "F", mean_female_age, dsClean$Age)
+
+dsClean
+
+
+
+summary(dsClean)
+```
+
+```{r}
+write.csv(dsClean, "bk/dsClean.csv", row.names = FALSE)
+
+```
+
+```{r}
+  #dsLoad <- read.csv('bk/dsClean.csv',header=T,na.strings = '')
+
+  dsTrain <- create_train_test(dsClean, 0.8, train = TRUE)
+  dsTest <- create_train_test(dsClean, 0.8, train = FALSE)
+  
+```
+
+# EXPERIMENTO 2
+## Regresion lineal multiple
+
+```{r}
+# Copiando Data Sets
+EXP2 <- create_train_test(datasetoriginal, 0.8, train = TRUE)
+EXP2Test <- create_train_test(datasetoriginal, 0.8, train = FALSE)
+
+
+
+#EXP1Test
+# Modelo de regresion lineal multiple
+modelo <- lm(Cured ~ ., data = EXP2)
+#summary(modelo)
+predicciones <- predict(modelo, newdata = EXP2Test)
+
+#predicciones
+print("confusion_matrix")
+EXP1confusion_matrix <- table(EXP2Test$passager_survived, predict > 0.5)
+EXP1confusion_matrix
+print("accuracy_Test")
+
+accuracy_Test1 <- sum(diag(table_mat)) / sum(table_mat)
+accuracy_Test1
+```
+
+
+# Experimento 1
+## GLM: Técnica de modelado estadístico que se utiliza para modelar relaciones entre variables de respuesta y variables explicativas. En R, GLM es una función que se utiliza para ajustar modelos lineales generalizados. 
+```{r}
+
+EXP1Train<- dsTrain
+EXP1Test<-dsTest
+EXP1Train
+
+#EXP1Test
+# Modelo de regresion lineal multiple
+model <- glm(passenger_survived ~ . , data = EXP1Train)
+predict <- predict(model, EXP1Test, type = 'response')
+print("confusion_matrix")
+EXP2confusion_matrix <- table(EXP1Test$passenger_survived, predict > 0.5)
+EXP2confusion_matrix
+print("accuracy_Test")
+accuracy_Test <- sum(diag(table_mat)) / sum(table_mat)
+accuracy_Test
+```
+
+
+
+# Experimento 3
+## Modelos lineales generalizados de suavizado (mgcv): Permite ajustar modelos lineales con términos suaves, lo que permite modelar relaciones no lineales entre las variables.
+
+```{r}
+
+
+EXP3 <- create_train_test(dsClean, 0.8, train = TRUE)
+EXP3Test <- create_train_test(datasetoriginal, 0.8, train = FALSE)
+
+# ajustar el modelo con gam
+model_gam <- gam(Cured ~., data = EXP3, family = binomial())
+
+# obtener predicciones en el conjunto de prueba
+predictions <- predict(model_gam, newdata = EXP3Test, type = "response")
+
+# calcular la matriz de confusión y la precisión de clasificación
+EXP3confusion_matrix <- table(EXP3Test$passager_survived, predictions > 0.5)
+accuracy_Test <- sum(diag(EXP3confusion_matrix)) / sum(EXP3confusion_matrix)
+
+# imprimir resultados
+print("confusion_matrix")
+print(EXP3confusion_matrix)
+print("accuracy_Test")
+print(accuracy_Test)
+
+
+```{r}
+
+```
+
+
+
+
+
+
+
+
+
